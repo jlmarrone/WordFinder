@@ -9,6 +9,8 @@ public class WordFinder
 
     public WordFinder(IEnumerable<string> matrix)
     {
+        ValidateMatrix(matrix);
+
         var matrixList = matrix.ToList();
         _rows = matrixList.Count;
         _cols = matrixList.FirstOrDefault()?.Length ?? 0;
@@ -26,6 +28,11 @@ public class WordFinder
 
     public IEnumerable<string> Find(IEnumerable<string> wordStream)
     {
+        if (wordStream == null)
+        {
+            throw new ArgumentException("Word stream cannot be null.");
+        }
+        
         var wordCount = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var word in wordStream.Distinct(StringComparer.OrdinalIgnoreCase))
@@ -82,5 +89,20 @@ public class WordFinder
             colChars[i] = _matrix[i, col];
         }
         return new string(colChars);
+    }
+
+    private static void ValidateMatrix(IEnumerable<string> matrix)
+    {
+        if (matrix == null || !matrix.Any())
+        {
+            throw new ArgumentException("Matrix cannot be null or empty.");
+        }
+
+        var length = matrix.First().Length;
+        
+        if (matrix.Any(str => str.Length != length))
+        {
+            throw new ArgumentException("All strings in the matrix must have the same length.");
+        }
     }
 }

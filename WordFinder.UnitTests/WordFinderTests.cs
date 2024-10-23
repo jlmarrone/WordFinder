@@ -6,6 +6,46 @@ namespace WordFinder.UnitTests;
 public class WordFinderTests
 {
     [Fact]
+    public void Constructor_ShouldThrowException_WhenMatrixIsNull()
+    {
+        // Arrange
+        var matrix = (IEnumerable<string>)default!;
+
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentException>(() => new WordFinder(matrix));
+        Assert.Equal("Matrix cannot be null or empty.", exception.Message);
+    }
+    
+    [Fact]
+    public void Constructor_ShouldThrowException_WhenMatrixIsEmpty()
+    {
+        // Arrange
+        var matrix = Array.Empty<string>();
+
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentException>(() => new WordFinder(matrix));
+        Assert.Equal("Matrix cannot be null or empty.", exception.Message);
+    }
+    
+    [Fact]
+    public void Constructor_ShouldThrowException_WhenStringsHaveDifferentLengths()
+    {
+        // Arrange
+        var matrix = new List<string>
+        {
+            "chill",
+            "cold",
+            "windy",
+            "dough",
+            "extraLongString"
+        };
+
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentException>(() => new WordFinder(matrix));
+        Assert.Equal("All strings in the matrix must have the same length.", exception.Message);
+    }
+    
+    [Fact]
     public void Find_ShouldReturnFoundWords_WhenWordsAreInMatrix()
     {
         // Arrange
