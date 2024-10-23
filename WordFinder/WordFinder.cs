@@ -1,4 +1,5 @@
 ﻿
+// ReSharper disable PossibleMultipleEnumeration
 namespace WordFinder;
 
 public class WordFinder

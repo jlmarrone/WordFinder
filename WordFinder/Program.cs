@@ -1,24 +1,54 @@
-﻿Console.WriteLine("Word Finder Example");
+﻿using WordFinder.Common.Constants;
 
-var matrix = new List<string>
+namespace WordFinder;
+
+internal static class Program
 {
-    "abcdc",
-    "fgwio",
-    "chill",
-    "pqnsd",
-    "uvdxy"
-};
+    static void Main(string[] args)
+    {
+        var exit = false;
 
-var wordFinder = new WordFinder.WordFinder(matrix);
+        while (!exit)
+        {
+            ShowMenu();
+            var choice = Console.ReadLine();
+            exit = HandleUserChoice(choice!);
+        }
+    }
 
-var wordStream = new List<string>
-{
-    "chill",
-    "cold",
-    "wind",
-    "snow"
-};
+    private static void ShowMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("Main Menu");
+        Console.WriteLine("1. Option One: Working Example");
+        Console.WriteLine("2. Option Two: Example with Null Matrix");
+        Console.WriteLine("3. Option Three: Example with Matrix that has different lengths");
+        Console.WriteLine("4. Exit");
+        Console.Write("Please select an option: ");
+    }
 
-var foundWords = wordFinder.Find(wordStream).ToList();
-
-foundWords.ForEach(Console.WriteLine);
+    static bool HandleUserChoice(string choice)
+    {
+        switch (choice)
+        {
+            case WordFinderConstants.MenuOptions.OptionOne:
+                WordFinderExamples.WorkingExample();
+                break;
+            case WordFinderConstants.MenuOptions.OptionTwo:
+                WordFinderExamples.NullMatrixExample();
+                break;
+            case WordFinderConstants.MenuOptions.OptionThree:
+                WordFinderExamples.MatrixWithDifferentLengthsExample();
+                break;
+            case WordFinderConstants.MenuOptions.OptionExit:
+                Console.WriteLine("Exiting the application...");
+                return true;
+            default:
+                Console.WriteLine("Invalid option, please try again.");
+                break;
+        }
+        Console.WriteLine("Press any key to return to the menu...");
+        Console.ReadKey();
+        return false;
+    }
+}

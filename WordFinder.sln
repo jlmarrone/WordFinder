@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder", "WordFinder\Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.UnitTests", "WordFinder.UnitTests\WordFinder.UnitTests.csproj", "{2E878606-0D85-41A8-9034-A9E389EF0F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Common", "WordFinder.Common\WordFinder.Common.csproj", "{3850F7F2-6CE2-4317-AE99-B346397DDFCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2E878606-0D85-41A8-9034-A9E389EF0F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E878606-0D85-41A8-9034-A9E389EF0F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E878606-0D85-41A8-9034-A9E389EF0F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3850F7F2-6CE2-4317-AE99-B346397DDFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3850F7F2-6CE2-4317-AE99-B346397DDFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3850F7F2-6CE2-4317-AE99-B346397DDFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3850F7F2-6CE2-4317-AE99-B346397DDFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
